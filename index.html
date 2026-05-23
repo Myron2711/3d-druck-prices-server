@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PrintForge – 3D Druck Studio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">Print<span>Forge</span></div>
+    <ul class="nav-links">
+      <li><a href="#products">Waren</a></li>
+      <li><a href="#pricing">Preise</a></li>
+      <li><a href="#calculator">Kalkulator</a></li>
+      <li><a href="#contact" class="nav-cta">Anfrage</a></li>
+    </ul>
+    <button class="burger" onclick="toggleMenu()">&#9776;</button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">Dein lokales 3D-Druck Studio</p>
+      <h1 class="hero-title">Ideen werden<br/><span>Realität.</span></h1>
+      <p class="hero-sub">Präzisionsdruck in über 20 Materialien. Kleinserien, Prototypen, Einzelstücke – wir drucken deine Vision.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">Waren ansehen</a>
+        <a href="#calculator" class="btn-ghost">Preis berechnen</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="cube">
+        <div class="face front"></div>
+        <div class="face back"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num" data-target="500">0</span><span>+ Projekte</span></div>
+    <div class="stat"><span class="stat-num" data-target="20">0</span><span>+ Materialien</span></div>
+    <div class="stat"><span class="stat-num" data-target="48">0</span><span>h Lieferzeit</span></div>
+    <div class="stat"><span class="stat-num" data-target="98">0</span><span>% Zufriedenheit</span></div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section">
+    <div class="section-header">
+      <p class="section-tag">Aktuelle Waren</p>
+      <h2>Verfügbare Produkte</h2>
+      <p class="section-sub">Sofort lieferbare Lagerware & anpassbare Standardmodelle</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">Alle</button>
+      <button class="filter-btn" onclick="filterProducts('lager', this)">Lagerware</button>
+      <button class="filter-btn" onclick="filterProducts('custom', this)">Custom</button>
+      <button class="filter-btn" onclick="filterProducts('proto', this)">Prototypen</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section section-dark">
+    <div class="section-header">
+      <p class="section-tag">Preisübersicht</p>
+      <h2>Transparente Preise</h2>
+      <p class="section-sub">Keine versteckten Kosten – alles klar kalkuliert</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-icon">🧩</div>
+        <h3>Basis</h3>
+        <div class="pricing-price">ab <span>0,05 €</span>/g</div>
+        <ul>
+          <li>✓ PLA Material</li>
+          <li>✓ Standard Qualität</li>
+          <li>✓ 0,2mm Schichthöhe</li>
+          <li>✓ 5–7 Werktage</li>
+          <li class="x">✗ Lackierung</li>
+          <li class="x">✗ Express</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Anfragen</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="badge">Beliebt</div>
+        <div class="pricing-icon">⚡</div>
+        <h3>Pro</h3>
+        <div class="pricing-price">ab <span>0,09 €</span>/g</div>
+        <ul>
+          <li>✓ PETG / ABS / TPU</li>
+          <li>✓ Hohe Qualität</li>
+          <li>✓ 0,1mm Schichthöhe</li>
+          <li>✓ 2–3 Werktage</li>
+          <li>✓ Grundlackierung</li>
+          <li class="x">✗ Express</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Anfragen</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-icon">🏆</div>
+        <h3>Premium</h3>
+        <div class="pricing-price">ab <span>0,15 €</span>/g</div>
+        <ul>
+          <li>✓ Alle Materialien</li>
+          <li>✓ Profi Qualität</li>
+          <li>✓ 0,05mm Schichthöhe</li>
+          <li>✓ 24h Express</li>
+          <li>✓ Vollständige Lackierung</li>
+          <li>✓ Persönliche Beratung</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Anfragen</a>
+      </div>
+    </div>
+
+    <!-- Materialien Tabelle -->
+    <div class="material-table-wrap">
+      <h3 class="table-title">Materialpreise im Überblick</h3>
+      <table class="material-table">
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Eigenschaften</th>
+            <th>Preis/g</th>
+            <th>Verfügbar</th>
+          </tr>
+        </thead>
+        <tbody id="materialTableBody">
+          <!-- injected by JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PRICE CALCULATOR -->
+  <section id="calculator" class="section">
+    <div class="section-header">
+      <p class="section-tag">Selbst berechnen</p>
+      <h2>Preiskalkulator</h2>
+      <p class="section-sub">Schätze deinen Druckpreis in Sekunden</p>
+    </div>
+
+    <div class="calc-wrap">
+      <div class="calc-form">
+        <div class="calc-field">
+          <label>Gewicht des Drucks (Gramm)</label>
+          <input type="range" id="weightRange" min="5" max="1000" value="50" oninput="updateCalc()"/>
+          <div class="range-val"><span id="weightVal">50</span> g</div>
+        </div>
+        <div class="calc-field">
+          <label>Material</label>
+          <select id="materialSelect" onchange="updateCalc()">
+            <option value="0.05">PLA – 0,05 €/g</option>
+            <option value="0.07">PETG – 0,07 €/g</option>
+            <option value="0.09">ABS – 0,09 €/g</option>
+            <option value="0.12">TPU – 0,12 €/g</option>
+            <option value="0.18">Resin – 0,18 €/g</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Qualitätsstufe</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" onclick="setQuality(1, this)">Standard</button>
+            <button class="toggle-btn" onclick="setQuality(1.4, this)">Hoch</button>
+            <button class="toggle-btn" onclick="setQuality(2, this)">Profi</button>
+          </div>
+        </div>
+        <div class="calc-field">
+          <label>Extras</label>
+          <div class="checkbox-group">
+            <label class="check-label"><input type="checkbox" onchange="updateCalc()"> Lackierung +2,00 €</label>
+            <label class="check-label"><input type="checkbox" onchange="updateCalc()"> Express (24h) +5,00 €</label>
+            <label class="check-label"><input type="checkbox" onchange="updateCalc()"> Support-Entfernung +1,50 €</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div class="result-card">
+          <p class="result-label">Geschätzter Preis</p>
+          <div class="result-price" id="resultPrice">2,50 €</div>
+          <div class="result-breakdown" id="resultBreakdown"></div>
+          <p class="result-note">* Unverbindliche Schätzung. Finaler Preis nach Datei-Analyse.</p>
+          <a href="#contact" class="btn-primary" style="width:100%;text-align:center;display:block;">Verbindliches Angebot</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-dark">
+    <div class="section-header">
+      <p class="section-tag">Kontakt</p>
+      <h2>Anfrage stellen</h2>
+      <p class="section-sub">Schick uns deine STL-Datei und wir melden uns innerhalb von 24 Stunden</p>
+    </div>
+    <div class="contact-wrap">
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Name *</label>
+            <input type="text" placeholder="Max Mustermann" required />
+          </div>
+          <div class="form-field">
+            <label>E-Mail *</label>
+            <input type="email" placeholder="max@email.de" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Beschreibung deines Projekts</label>
+          <textarea rows="4" placeholder="Beschreibe dein Druckprojekt, Material-Wünsche, Menge..."></textarea>
+        </div>
+        <div class="form-field">
+          <label>STL-Datei hochladen (optional)</label>
+          <div class="file-drop" id="fileDrop" onclick="document.getElementById('fileInput').click()">
+            <span id="fileLabel">📎 Datei auswählen oder hierher ziehen</span>
+            <input type="file" id="fileInput" accept=".stl,.obj" style="display:none" onchange="handleFile(this)"/>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Anfrage absenden ✈</button>
+      </form>
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div>
+            <strong>Studio</strong>
+            <p>Musterstraße 1<br/>12345 Musterstadt</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div>
+            <strong>Telefon</strong>
+            <p>+49 123 456789</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">✉️</div>
+          <div>
+            <strong>E-Mail</strong>
+            <p>info@printforge.de</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🕐</div>
+          <div>
+            <strong>Öffnungszeiten</strong>
+            <p>Mo–Fr: 9–18 Uhr<br/>Sa: 10–14 Uhr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Print<span>Forge</span></div>
+      <p>© 2025 PrintForge. Alle Rechte vorbehalten.</p>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
